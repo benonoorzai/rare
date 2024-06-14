@@ -1,0 +1,179 @@
+import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.HashSet;
+import java.util.Queue;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Scanner;
+
+public class CollectionsDemo {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        while (true) {
+            System.out.println("Choose a collection to demonstrate:");
+            System.out.println("1. ArrayList");
+            System.out.println("2. LinkedList");
+            System.out.println("3. Set");
+            System.out.println("4. Queue");
+            System.out.println("5. Map");
+            System.out.println("0. Exit");
+            System.out.print("Enter your choice: ");
+            int choice = scanner.nextInt();
+
+            switch (choice) {
+                case 1:
+                    demonstrateArrayList();
+                    break;
+                case 2:
+                    demonstrateLinkedList();
+                    break;
+                case 3:
+                    demonstrateSet();
+                    break;
+                case 4:
+                    demonstrateQueue();
+                    break;
+                case 5:
+                    demonstrateMap();
+                    break;
+                case 0:
+                    System.out.println("Exiting...");
+                    return;
+                default:
+                    System.out.println("Invalid choice. Please try again.");
+            }
+        }
+    }
+
+    private static void demonstrateArrayList() {
+        System.out.println("ArrayList Demo:");
+
+        ArrayList<String> stringList = new ArrayList<>();
+        stringList.add("Hello");
+        stringList.add("World");
+        stringList.add("!");
+
+        // Display elements
+        System.out.println("ArrayList Elements: " + stringList);
+
+        // Access an element
+        System.out.println("Element at index 1: " + stringList.get(1));
+
+        // Modify an element
+        stringList.set(1, "Java");
+        System.out.println("Modified ArrayList Elements: " + stringList);
+
+        // Remove an element
+        stringList.remove(2);
+        System.out.println("ArrayList after removal: " + stringList);
+
+        // Check if the list contains an element
+        System.out.println("Contains 'Java': " + stringList.contains("Java"));
+
+        System.out.println();
+    }
+
+    private static void demonstrateLinkedList() {
+        System.out.println("LinkedList Demo:");
+
+        LinkedList<Double> doubleList = new LinkedList<>();
+        doubleList.add(3.14);
+        doubleList.add(2.718);
+        doubleList.add(1.618);
+
+        // Display elements
+        System.out.println("LinkedList Elements: " + doubleList);
+
+        // Access first and last elements
+        System.out.println("First Element: " + doubleList.getFirst());
+        System.out.println("Last Element: " + doubleList.getLast());
+
+        // Add elements at the beginning and end
+        doubleList.addFirst(0.577);
+        doubleList.addLast(1.414);
+        System.out.println("Modified LinkedList Elements: " + doubleList);
+
+        // Remove the first element
+        doubleList.removeFirst();
+        System.out.println("LinkedList after removal: " + doubleList);
+
+        System.out.println();
+    }
+
+    private static void demonstrateSet() {
+        System.out.println("Set Demo:");
+
+        HashSet<Integer> intSet = new HashSet<>();
+        intSet.add(10);
+        intSet.add(20);
+        intSet.add(30);
+
+        // Display elements
+        System.out.println("Set Elements: " + intSet);
+
+        // Add a duplicate element
+        intSet.add(20);
+        System.out.println("Set after adding duplicate: " + intSet);
+
+        // Remove an element
+        intSet.remove(20);
+        System.out.println("Set after removal: " + intSet);
+
+        // Check if the set contains an element
+        System.out.println("Contains 10: " + intSet.contains(10));
+
+        System.out.println();
+    }
+
+    private static void demonstrateQueue() {
+        System.out.println("Queue Demo:");
+
+        Queue<String> stringQueue = new LinkedList<>();
+        stringQueue.add("A");
+        stringQueue.add("B");
+        stringQueue.add("C");
+
+        // Display elements
+        System.out.println("Queue Elements: " + stringQueue);
+
+        // Peek at the front element
+        System.out.println("Front Element: " + stringQueue.peek());
+
+        // Remove the front element
+        stringQueue.poll();
+        System.out.println("Queue after poll: " + stringQueue);
+
+        // Check if the queue contains an element
+        System.out.println("Contains 'B': " + stringQueue.contains("B"));
+
+        System.out.println();
+    }
+
+    private static void demonstrateMap() {
+        System.out.println("Map Demo:");
+
+        Map<Integer, String> map = new HashMap<>();
+        map.put(1, "One");
+        map.put(2, "Two");
+        map.put(3, "Three");
+
+        // Display elements
+        System.out.println("Map Elements: " + map);
+
+        // Access a value
+        System.out.println("Value for key 2: " + map.get(2));
+
+        // Modify a value
+        map.put(2, "Twenty");
+        System.out.println("Modified Map Elements: " + map);
+
+        // Remove a key-value pair
+        map.remove(3);
+        System.out.println("Map after removal: " + map);
+
+        // Check if the map contains a key
+        System.out.println("Contains key 1: " + map.containsKey(1));
+
+        System.out.println();
+    }
+}
