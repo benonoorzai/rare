@@ -1,0 +1,60 @@
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Scanner;
+
+public class VotingSystem {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        ArrayList<Candidate> candidates = new ArrayList<>();
+        Map<Integer, Candidate> candidateMap = new HashMap<>();
+
+        // Input number of candidates
+        System.out.print("Enter the number of candidates: ");
+        int numberOfCandidates = scanner.nextInt();
+        scanner.nextLine(); // Consume newline
+
+        // Input candidate names
+        for (int i = 1; i <= numberOfCandidates; i++) {
+            System.out.print("Enter the name of candidate " + i + ": ");
+            String name = scanner.nextLine();
+            Candidate candidate = new Candidate(i, name);
+            candidates.add(candidate);
+            candidateMap.put(i, candidate);
+        }
+
+        // Voting process
+        while (true) {
+            System.out.println("Candidates:");
+            for (Candidate candidate : candidates) {
+                System.out.println(candidate.getId() + ". " + candidate.getName());
+            }
+            System.out.print("Enter the ID of the candidate you want to vote for (or enter 0 to stop): ");
+            int voteId = scanner.nextInt();
+
+            if (voteId == 0) break;
+
+            if (candidateMap.containsKey(voteId)) {
+                candidateMap.get(voteId).addVote();
+                System.out.println("Vote registered for Candidate " + voteId);
+            } else {
+                System.out.println("Invalid ID. Try again.");
+            }
+        }
+
+        // Display winners
+        System.out.println("Winners:");
+        int maxVotes = 0;
+        for (Candidate candidate : candidates) {
+            if (candidate.getVotes() > maxVotes) {
+                maxVotes = candidate.getVotes();
+            }
+        }
+
+        for (Candidate candidate : candidates) {
+            if (candidate.getVotes() == maxVotes) {
+                System.out.println(candidate);
+            }
+        }
+    }
+}
